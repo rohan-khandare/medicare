@@ -8,7 +8,7 @@ import Docters from '../pages/Docters/Docters.jsx'
 import DocterDetails from '../pages/Docters/DocterDetails.jsx'
 import MyAccount from '../Dashboard/user-account/MyAccount'
 import Dashboard from '../Dashboard/doctor-account/Dashboard.jsx'
-import CheckoutSuccess from '../pages/Docters/CheckoutSuccess.jsx'
+import CheckoutSuccess from "../pages/Docters/CheckoutSuccess";
 
 import { Route,Routes } from 'react-router-dom'
 
