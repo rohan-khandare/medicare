@@ -1,0 +1,8 @@
+footer{
+    background-image: url('../../assets/images/mask.png');
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    width: 100vw; /* 100% of viewport width */
+    /* height: 100vh; 100% of viewport height */
+
+}
