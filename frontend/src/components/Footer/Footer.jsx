@@ -3,7 +3,7 @@ import './Footer.css'
 import { Link } from "react-router-dom"
 import logo from '../../assets/images/logo.png'
 
-import {AiFillLinkedin,AiFillYoutube,AiFillGithub,AiOutlineInstagram} from '/node_modules/.vite/deps/react-icons_ai.js'
+import {AiFillLinkedin,AiFillYoutube,AiFillGithub,AiOutlineInstagram} from 'react-icons/ai'
 
 const socialLinks =[
   {
