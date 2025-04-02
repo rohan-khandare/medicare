@@ -89,7 +89,7 @@ export const paymentVerification = async (req,res)=>{
     if (isAuthentic) {
 
         // redirect to frontend
-        res.redirect("http://localhost:5173/checkout-success")
+        res.redirect("https://client-teal-alpha-28.vercel.app/users/profile/me")
     }else{
         res.status(400).json({
             success:false,
