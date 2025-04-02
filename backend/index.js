@@ -89,10 +89,11 @@ const app = express();
 //     }
 // };
 const corsOptions = {
-  origin: ["https://your-frontend-url.vercel.app"],  // Add your frontend URL
-  credentials: true
+    origin: ["https://client-teal-alpha-28.vercel.app"], // Allow frontend
+    credentials: true, // Allow cookies/authentication
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
 };
-app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.send("API is working");
