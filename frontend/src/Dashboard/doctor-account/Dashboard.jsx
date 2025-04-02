@@ -5,7 +5,7 @@ import useGetProfile from '../../hooks/useFetchData.jsx'
 import { BASE_URL } from '../../../config.js'
 import Tabs from './Tabs.jsx'
 import { useState } from 'react'
-import starIcon from '../../assets/images/Star.png';
+import starIcon from '../../assets/images/star.png';
 import DoctorAbout from '../../pages/Docters/DocterAbout.jsx'
 import Profile from './Profile.jsx';
 import Appointments from './Appointments.jsx';
