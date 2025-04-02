@@ -94,6 +94,7 @@ const corsOptions = {
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
 };
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.send("API is working");
