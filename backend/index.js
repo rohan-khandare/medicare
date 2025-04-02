@@ -82,12 +82,17 @@ import Razorpay from "razorpay";
 dotenv.config();
 const app = express();
 
+// const corsOptions = {
+//     origin: function (origin, callback) {
+//         console.log('Request Origin:', origin);
+//         callback(null, true);
+//     }
+// };
 const corsOptions = {
-    origin: function (origin, callback) {
-        console.log('Request Origin:', origin);
-        callback(null, true);
-    }
+  origin: ["https://your-frontend-url.vercel.app"],  // Add your frontend URL
+  credentials: true
 };
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.send("API is working");
