@@ -64,7 +64,7 @@ const SidePanel = ({doctorId,ticketPrice,timeSlots,image,name,description}) => {
                 description: description,
                 image: image,
                 order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                callback_url: "http://localhost:5000/api/v1/bookings/paymentverification",
+                callback_url: `${BASE_URL}/bookings/paymentverification`,
                 prefill: { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
                     "name": userNaame, //your customer's name
                     "email": userEmail,
