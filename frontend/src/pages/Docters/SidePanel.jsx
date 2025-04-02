@@ -44,12 +44,13 @@ const SidePanel = ({doctorId,ticketPrice,timeSlots,image,name,description}) => {
     //     }
 
     // }
-            
+         
+
     const checkoutHandler =async ()=>{
         
         try {
 
-            const {data:{order}} =await axios.post(`${BASE_URL}/api/v1/bookings/checkout`,{
+            const {data:{order}} =await axios.post(`${BASE_URL}/bookings/checkout`,{
                 ticketPrice:ticketPrice,
                 userId:userId,
                 doctorId:doctorId,
@@ -87,7 +88,7 @@ const SidePanel = ({doctorId,ticketPrice,timeSlots,image,name,description}) => {
     const handleBookAppointment = async () => {
         try {
             // Send a POST request to your backend API to save the booking
-            const response = await axios.post("http://localhost:5000/api/v1/bookings/book-appointment", {
+            const response = await axios.post(`${BASE_URL}/bookings/book-appointment`, {
                 // Include necessary data for booking
                 doctorId: doctorId,
                 userId: userId,
