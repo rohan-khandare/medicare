@@ -2,7 +2,7 @@
 
 
 import convertTime from "../../utils/convertTime";
-// import {BASE_URL} from "./../../../config";
+import {BASE_URL} from "./../../../config";
 import {toast} from 'react-toastify';
 import  axios  from "axios";
 
@@ -44,12 +44,12 @@ const SidePanel = ({doctorId,ticketPrice,timeSlots,image,name,description}) => {
     //     }
 
     // }
-    
+            
     const checkoutHandler =async ()=>{
         
         try {
 
-            const {data:{order}} =await axios.post("http://localhost:5000/api/v1/bookings/checkout",{
+            const {data:{order}} =await axios.post(`${BASE_URL}/api/v1/bookings/checkout`,{
                 ticketPrice:ticketPrice,
                 userId:userId,
                 doctorId:doctorId,
