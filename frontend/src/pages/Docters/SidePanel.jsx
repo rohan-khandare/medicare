@@ -1,110 +1,166 @@
-/* eslint-disable react/prop-types */
+// /* eslint-disable react/prop-types */
 
 
-import convertTime from "../../utils/convertTime";
-import {BASE_URL} from "./../../../config";
-import {toast} from 'react-toastify';
-import  axios  from "axios";
+// import convertTime from "../../utils/convertTime";
+// import {BASE_URL} from "./../../../config";
+// import {toast} from 'react-toastify';
+// import  axios  from "axios";
 
-const SidePanel = ({doctorId,ticketPrice,timeSlots,image,name,description}) => {
+// const SidePanel = ({doctorId,ticketPrice,timeSlots,image,name,description}) => {
     
-    const userString = sessionStorage.getItem('user'); // Assuming 'user' is stored as a stringified JSON
-    const userObject = JSON.parse(userString); // Parse the JSON string to an object
+//     const userString = sessionStorage.getItem('user'); // Assuming 'user' is stored as a stringified JSON
+//     const userObject = JSON.parse(userString); // Parse the JSON string to an object
     
-    // Now you can access the _id property
-    const userId = userObject._id;
-    const userNaame= userObject.name;
-    const userEmail=userObject.email;
+//     // Now you can access the _id property
+//     const userId = userObject._id;
+//     const userNaame= userObject.name;
+//     const userEmail=userObject.email;
     
-    console.log(userId); 
+//     console.log(userId); 
 
-    // const bookingHandler = async()=>{
-    //     try {
+//     // const bookingHandler = async()=>{
+//     //     try {
 
-    //         const res = await fetch(`${BASE_URL}/bookings/checkout-session/${doctorId}`,{
-    //             method:'post', 
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify({ userId: userId }) // Include userId in the request body
+//     //         const res = await fetch(`${BASE_URL}/bookings/checkout-session/${doctorId}`,{
+//     //             method:'post', 
+//     //             headers: {
+//     //                 'Content-Type': 'application/json'
+//     //             },
+//     //             body: JSON.stringify({ userId: userId }) // Include userId in the request body
                
-    //         })
+//     //         })
             
-    //         const data = await res.json()
+//     //         const data = await res.json()
 
-    //         if (!res.ok) {
-    //             throw new Error(data.message+ 'please try again')
-    //         }
-    //         if (data.session.url) {
-    //             window.location.href = data.session.url
-    //         }
+//     //         if (!res.ok) {
+//     //             throw new Error(data.message+ 'please try again')
+//     //         }
+//     //         if (data.session.url) {
+//     //             window.location.href = data.session.url
+//     //         }
 
-    //     } catch (err) {
-    //         toast.error(err.message)
-    //     }
+//     //     } catch (err) {
+//     //         toast.error(err.message)
+//     //     }
 
-    // }
+//     // }
          
 
-    const checkoutHandler =async ()=>{
+//     const checkoutHandler =async ()=>{
         
-        try {
+//         try {
 
-            const {data:{order}} =await axios.post(`${BASE_URL}/bookings/checkout`,{
-                ticketPrice:ticketPrice,
-                userId:userId,
-                doctorId:doctorId,
-            })
+//             const {data:{order}} =await axios.post(`${BASE_URL}/bookings/checkout`,{
+//                 ticketPrice:ticketPrice,
+//                 userId:userId,
+//                 doctorId:doctorId,
+//             })
             
-            const options = {
-                key: "rzp_test_wBzfPbJxzbmtvg", // Enter the Key ID generated from the Dashboard
-                amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-                currency: "INR",
-                name: name, //your business name
-                description: description,
-                image: image,
-                order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                callback_url: `${BASE_URL}/bookings/paymentverification`,
-                prefill: { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-                    "name": userNaame, //your customer's name
-                    "email": userEmail,
-                    "contact": "9000090000" //Provide the customer's phone number for better conversion rates 
-                },
-                notes: {
-                    "address": "Razorpay Corporate Office"
-                },
-                theme: {
-                    "color": "#3399cc"
-                }
-            };
-            const rzp1 = new window.Razorpay(options);
-            rzp1.open();
+//             const options = {
+//                 key: "rzp_test_wBzfPbJxzbmtvg", // Enter the Key ID generated from the Dashboard
+//                 amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+//                 currency: "INR",
+//                 name: name, //your business name
+//                 description: description,
+//                 image: image,
+//                 order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+//                 callback_url: `${BASE_URL}/bookings/paymentverification`,
+//                 prefill: { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+//                     "name": userNaame, //your customer's name
+//                     "email": userEmail,
+//                     "contact": "9000090000" //Provide the customer's phone number for better conversion rates 
+//                 },
+//                 notes: {
+//                     "address": "Razorpay Corporate Office"
+//                 },
+//                 theme: {
+//                     "color": "#3399cc"
+//                 }
+//             };
+//             const rzp1 = new window.Razorpay(options);
+//             rzp1.open();
             
-        } catch (err){
-            console.error('Error fetching data:', err.message);
-        }       
-    }    
+//         } catch (err){
+//             console.error('Error fetching data:', err.message);
+//         }       
+//     }    
 
-    const handleBookAppointment = async () => {
-        try {
-            // Send a POST request to your backend API to save the booking
-            const response = await axios.post(`${BASE_URL}/bookings/book-appointment`, {
-                // Include necessary data for booking
-                doctorId: doctorId,
-                userId: userId,
-                ticketPrice:ticketPrice,
-                // Other booking details as needed
-            });
+//     const handleBookAppointment = async () => {
+//         try {
+//             // Send a POST request to your backend API to save the booking
+//             const response = await axios.post(`${BASE_URL}/bookings/book-appointment`, {
+//                 // Include necessary data for booking
+//                 doctorId: doctorId,
+//                 userId: userId,
+//                 ticketPrice:ticketPrice,
+//                 // Other booking details as needed
+//             });
     
-            // Handle the response if needed (e.g., show a success message)
-            console.log("Booking saved successfully:", response.data);
-            toast.success("Booking saved successfully");
-        } catch (error) {
-            // Handle any errors (e.g., show an error message)
-            console.error("Error saving booking:", error.message);
-            toast.error("Error saving booking:", error.message);
-        }
-    };
+//             // Handle the response if needed (e.g., show a success message)
+//             console.log("Booking saved successfully:", response.data);
+//             toast.success("Booking saved successfully");
+//         } catch (error) {
+//             // Handle any errors (e.g., show an error message)
+//             console.error("Error saving booking:", error.message);
+//             toast.error("Error saving booking:", error.message);
+//         }
+//     };
+
+import { BASE_URL } from "../../../config";  // Ensure BASE_URL is correct
+import { toast } from "react-toastify";
+import axios from "axios";
+
+const checkoutHandler = async () => {
+    try {
+        const { data: { order } } = await axios.post(`${BASE_URL}/bookings/checkout`, {
+            ticketPrice,
+            userId,
+            doctorId,
+        });
+
+        const options = {
+            key: "rzp_test_wBzfPbJxzbmtvg",
+            amount: order.amount,
+            currency: "INR",
+            name,
+            description,
+            image,
+            order_id: order.id,
+            callback_url: `${BASE_URL}/bookings/paymentverification`,
+            prefill: {
+                name: userNaame,
+                email: userEmail,
+                contact: "9000090000"
+            },
+            notes: {
+                address: "Razorpay Corporate Office"
+            },
+            theme: { color: "#3399cc" }
+        };
+        const rzp1 = new window.Razorpay(options);
+        rzp1.open();
+        
+    } catch (err) {
+        console.error("Error fetching data:", err.message);
+        toast.error("Payment error. Please try again.");
+    }
+};
+
+const handleBookAppointment = async () => {
+    try {
+        const response = await axios.post(`${BASE_URL}/bookings/book-appointment`, {
+            doctorId,
+            userId,
+            ticketPrice,
+        });
+
+        console.log("Booking saved successfully:", response.data);
+        toast.success("Booking saved successfully");
+    } catch (error) {
+        console.error("Error saving booking:", error.message);
+        toast.error("Error saving booking. Please try again.");
+    }
+};
 
     return (
     <div className='shadow-panelShadow p-3 lg:p-5 rounded-md'>
